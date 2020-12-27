@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ChemBase</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-login-form/chembase-login-form.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-progress-dialog/chembase-progress-dialog.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-notification-dialog/chembase-notification-dialog.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="elements/chembase-login-form/chembase-login-form.js"></script>
+        <script type="text/javascript" src="elements/chembase-progress-dialog/chembase-progress-dialog.js"></script>
+        <script type="text/javascript" src="elements/chembase-notification-dialog/chembase-notification-dialog.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+    </head>
+
+    <body onload="initializeVue()">
+
+        <div id="loginForm">
+            <chembase-login-form
+                v-if=visible
+                v-bind:title="title"
+                v-bind:loginbuttonmessage="loginButtonMessage"
+                v-bind:loginbuttonclickhandler="loginButtonClickHandler">
+            </chembase-login-form>
+        </div>
+
+        <div id="progressDialog">
+            <chembase-progress-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:buttonmessage="buttonMessage"
+                v-bind:buttonclickhandler="buttonClickHandler">
+            </chembase-progress-dialog>
+        </div>
+
+        <div id="notificationDialog">
+            <chembase-notification-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:message="message"
+                v-bind:buttonmessage="buttonMessage"
+                v-bind:buttonclickhandler="buttonClickHandler">
+            </chembase-notification-dialog>
+        </div>
+    
+    </body>
+</html>

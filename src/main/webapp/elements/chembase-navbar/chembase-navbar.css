@@ -1,0 +1,38 @@
+.chembase-navbar
+{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.chembase-navbar-button
+{
+    display: block;
+    height: 40px;
+    color: #818181;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 8px 6px 8px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+.chembase-navbar-button:hover
+{
+    background-color: #304338;
+    color: black;
+}
+
+.chembasenavbaractive
+{
+    background-color: #FFF;
+    color: black;
+}

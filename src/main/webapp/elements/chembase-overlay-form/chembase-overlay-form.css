@@ -1,0 +1,393 @@
+.chembase-add-edit-dialog
+{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+.chembase-add-edit-dialog-content
+{
+    margin: auto;
+    background-color: #333;
+    border: 2px solid white;
+    padding: 20px;
+    width: 40%;
+    border-radius: 25px;
+}
+
+.chembase-add-edit-dialog-header
+{
+    padding: 20px 16px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-weight:bold;
+    font-size:130%;
+    border: 1px solid;
+    border-radius: 25px;
+}
+
+.chembase-add-edit-dialog-body
+{
+    padding: 20px 16px;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+}
+
+.chembase-add-edit-dialog-row
+{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.chembase-add-edit-dialog-button
+{
+    display: inline-block;
+    width: 49%;
+    margin: auto;
+    padding: 14px 16px;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.chembase-add-edit-dialog-button:hover
+{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.chembase-add-edit-dialog-label
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.chembase-add-edit-dialog-textfield
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog-textarea
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog-select
+{
+    font-weight: normal;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog-password
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog select:required:invalid
+{
+    color: gray;
+    font-weight: normal;
+} 
+
+.chembase-add-edit-dialog option[value=""][disabled]
+{
+    display: none;
+}
+
+.chembase-add-edit-dialog-body-textarea
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* SWITCH */
+/* ------ */
+
+ /* The switch - the box around the slider */
+.chembase-add-edit-dialog-switch
+{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 15px;
+}
+
+/* The slider */
+.chembase-add-edit-dialog-slider
+{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.chembase-add-edit-dialog-slider:before
+{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+/* Hide default HTML checkbox */
+.chembase-add-edit-dialog-switch input
+{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+input:checked + .chembase-add-edit-dialog-slider { background-color: #2196F3; }
+input:focus + .chembase-add-edit-dialog-slider   { box-shadow: 0 0 1px #2196F3; }
+
+input:checked + .chembase-add-edit-dialog-slider:before
+{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.chembase-add-edit-dialog-slider.round           { border-radius: 34px; }
+.chembase-add-edit-dialog-slider.round:before    { border-radius: 50%; } 
+
+/* ------------------------------------------------------------------------ */
+
+/* RADIOBUTTON GROUP IMPLEMENTATION */
+/* -------------------------------- */
+.chembase-add-edit-dialog-radiogroup
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog-radiogroup-value
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 10%;
+}
+
+.chembase-add-edit-dialog-radiogroup-label
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* CHECKBOX GROUP IMPLEMENTATION */
+/* ----------------------------- */
+.chembase-add-edit-dialog-checkboxgroup
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #111;
+    border-radius: 10px;
+    resize: vertical;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.chembase-add-edit-dialog-checkboxgroup-value
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 10%;
+}
+
+.chembase-add-edit-dialog-checkboxgroup-label
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* MULTISELECT IMPLEMENTATION */
+/* -------------------------- */
+.chembase-add-edit-dialog-multiselect
+{
+    width: 100%;
+}
+
+.chembase-add-edit-dialog-multiselect-selectbox
+{
+    position: relative;
+}
+
+.chembase-add-edit-dialog-multiselect-selectbox > select
+{
+    width: 100%;
+    font-weight: bold;
+}
+
+.chembase-add-edit-dialog-multiselect-overselect
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.chembase-add-edit-dialog-multiselect-checkboxes
+{
+    display: block;
+    border: 1px #dadada solid;
+    background-color: #F2F2F2;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #111;
+    border-radius: 10px;
+    color: black;
+    height: 200px;
+}
+
+.chembase-add-edit-dialog-multiselect-entry:hover
+{
+    background-color: #333;
+}
+
+.chembase-add-edit-dialog-multiselect-value
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 10%;
+}
+
+.chembase-add-edit-dialog-multiselect-label
+{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* ANIMATION */
+/* --------- */
+@keyframes animatetop
+{
+    from { top: -300px; opacity: 0;}
+    to {top: 0; opacity: 1;}
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* MEDIA QUERIES FOR DEALING WITH SMALLER SCREENS */
+/* ---------------------------------------------- */
+@media screen and (max-width: 1200px)
+{
+    .chembase-add-edit-dialog-content { width: 50%; }
+}
+
+@media screen and (max-width: 1000px)
+{
+    .chembase-add-edit-dialog-content { width: 70%; }
+}
+
+@media screen and (max-width: 800px)
+{
+    .chembase-add-edit-dialog-content { width: 80%; }
+}
+
+@media screen and (max-width: 500px)
+{
+    .chembase-add-edit-dialog-content { width: 90%; }
+}
+
+/* ------------------------------------------------------------------------ */

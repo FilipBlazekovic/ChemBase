@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ChemBase</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <link rel="stylesheet" type="text/css" href="elements/chembase-table/chembase-table.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-search-form/chembase-search-form.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-overlay-form/chembase-overlay-form.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-overlay-form-simple/chembase-overlay-form-simple.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-confirmation-dialog/chembase-confirmation-dialog.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-progress-dialog/chembase-progress-dialog.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-notification-dialog/chembase-notification-dialog.css">
+        <link rel="stylesheet" type="text/css" href="elements/chembase-navbar/chembase-navbar.css">   
+        <link rel="stylesheet" type="text/css" href="elements/chembase-login-form/chembase-login-form.css">   
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="elements/chembase-table/chembase-table.js"></script>
+        <script type="text/javascript" src="elements/chembase-search-form/chembase-search-form.js"></script>
+        <script type="text/javascript" src="elements/chembase-overlay-form/chembase-overlay-form.js"></script>
+        <script type="text/javascript" src="elements/chembase-overlay-form-simple/chembase-overlay-form-simple.js"></script>
+        <script type="text/javascript" src="elements/chembase-confirmation-dialog/chembase-confirmation-dialog.js"></script>
+        <script type="text/javascript" src="elements/chembase-progress-dialog/chembase-progress-dialog.js"></script>
+        <script type="text/javascript" src="elements/chembase-notification-dialog/chembase-notification-dialog.js"></script>
+        <script type="text/javascript" src="elements/chembase-navbar/chembase-navbar.js"></script>
+        <script type="text/javascript" src="elements/chembase-login-form/chembase-login-form.js"></script>
+
+        <script type="text/javascript" src="scripts/chemicals.js"></script>
+        <script type="text/javascript" src="scripts/locations.js"></script>
+        <script type="text/javascript" src="scripts/users.js"></script>
+        <script type="text/javascript" src="scripts/utils.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+    </head>
+
+    <!-- -------------------------------------------------------------------------------------------------- -->
+
+    <body onload="initializeVue()">
+
+        <div id="chemBaseNavbar">
+            <chembase-navbar
+                v-if=visible
+                v-bind:buttons="buttons"
+                v-bind:buttonhandler="buttonHandler">
+            </chembase-navbar>
+        </div>
+
+        <div id="chemicalsSearchForm">
+            <chembase-search-form
+                v-if=visible
+                v-bind:fields="fields"
+                v-bind:searchbuttonmessage="searchButtonMessage"
+                v-bind:searchbuttonclickhandler="searchButtonClickHandler">
+            </chembase-search-form>
+        </div>
+
+        <div id="chemicalsTable">
+            <chembase-table
+                v-if=visible
+                v-bind:titles="titles" 
+                v-bind:columns="columns"
+                v-bind:rows="rows"
+                v-bind:currentpage="currentPage"
+                v-bind:elementsperpage="elementsPerPage"
+                v-bind:filterfields="filterFields"
+                v-bind:tablefilters="tableFilters"
+                v-bind:exporthandler="exportHandler"
+                v-bind:popuphandler="popupHandler"
+                v-bind:showbottombar="showBottomBar"
+                v-bind:editbuttonicon="editButtonIcon"
+                v-bind:deletebuttonicon="deleteButtonIcon"
+                v-bind:editbuttontitle="editButtonTitle"
+                v-bind:deletebuttontitle="deleteButtonTitle">
+            </chembase-table>
+        </div>
+
+        <div id="locationsTable">
+            <chembase-table
+                v-if=visible
+                v-bind:titles="titles" 
+                v-bind:columns="columns"
+                v-bind:rows="rows"
+                v-bind:currentpage="currentPage"
+                v-bind:elementsperpage="elementsPerPage"
+                v-bind:filterfields="filterFields"
+                v-bind:tablefilters="tableFilters"
+                v-bind:exporthandler="exportHandler"
+                v-bind:popuphandler="popupHandler"
+                v-bind:showbottombar="showBottomBar"
+                v-bind:editbuttonicon="editButtonIcon"
+                v-bind:deletebuttonicon="deleteButtonIcon"
+                v-bind:editbuttontitle="editButtonTitle"
+                v-bind:deletebuttontitle="deleteButtonTitle">
+            </chembase-table>
+        </div>
+
+        <div id="usersTable">
+            <chembase-table
+                v-if=visible
+                v-bind:titles="titles" 
+                v-bind:columns="columns"
+                v-bind:rows="rows"
+                v-bind:currentpage="currentPage"
+                v-bind:elementsperpage="elementsPerPage"
+                v-bind:filterfields="filterFields"
+                v-bind:tablefilters="tableFilters"
+                v-bind:exporthandler="exportHandler"
+                v-bind:popuphandler="popupHandler"
+                v-bind:showbottombar="showBottomBar"
+                v-bind:editbuttonicon="editButtonIcon"
+                v-bind:deletebuttonicon="deleteButtonIcon"
+                v-bind:editbuttontitle="editButtonTitle"
+                v-bind:deletebuttontitle="deleteButtonTitle">
+            </chembase-table>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+
+        <div id="chemBaseProgressDialog">
+            <chembase-progress-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:buttonmessage="buttonMessage"
+                v-bind:buttonclickhandler="buttonClickHandler">
+            </chembase-progress-dialog>
+        </div>
+  
+        <div id="chemBaseNotificationDialog">
+            <chembase-notification-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:message="message"
+                v-bind:buttonmessage="buttonMessage"
+                v-bind:buttonclickhandler="buttonClickHandler">
+            </chembase-notification-dialog>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+
+        <div id="chemicalsAddEditDialog">
+            <chembase-overlay-form
+                v-if=visible
+                v-bind:title="title"
+                v-bind:fields="fields"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-overlay-form>
+        </div>
+
+        <div id="chemicalsDeleteDialog">
+            <chembase-confirmation-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:message="message"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-confirmation-dialog>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+
+        <div id="locationsAddEditDialog">
+            <chembase-overlay-form-simple
+                v-if=visible
+                v-bind:title="title"
+                v-bind:fields="fields"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-overlay-form-simple>
+        </div>
+
+        <div id="locationsDeleteDialog">
+            <chembase-confirmation-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:message="message"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-confirmation-dialog>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+
+        <div id="usersAddEditDialog">
+            <chembase-overlay-form-simple
+                v-if=visible
+                v-bind:title="title"
+                v-bind:fields="fields"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-overlay-form-simple>
+        </div>
+
+        <div id="usersDeleteDialog">
+            <chembase-confirmation-dialog
+                v-if=visible
+                v-bind:title="title"
+                v-bind:message="message"
+                v-bind:yesbuttonmessage="yesButtonMessage"
+                v-bind:nobuttonmessage="noButtonMessage"
+                v-bind:yesbuttonclickhandler="yesButtonClickHandler"
+                v-bind:nobuttonclickhandler="noButtonClickHandler">
+            </chembase-confirmation-dialog>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+
+        <br/><br/>
+
+    </body>
+
+</html>

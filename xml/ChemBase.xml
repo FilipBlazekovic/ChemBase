@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <host>localhost</host>
+    <port>5432</port>
+    <db>chembase</db>
+    <user>chembase_admin</user>
+    <pass>admin</pass>
+</config>
